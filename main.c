@@ -17,3 +17,13 @@ typedef struct {
 Joueur equipe[MAX_PLAYERS];
 int nombredujoueurs = 0;
 int prochainId = 1;
+void afficherMenu();
+void ajouterJoueur();
+void ajouterPlusieursJoueurs();
+void afficherTousJoueurs();
+void trierParNom();
+void trierParAge();
+void afficherParPoste();
+void modifierJoueur();
+void supprimerJoueur();
+void rechercherJoueur();
