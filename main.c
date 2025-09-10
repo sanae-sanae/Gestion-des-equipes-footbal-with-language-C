@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #define MAX_NAME_LENGTH 50
+#define MAX_PLAYERS 100
 
 typedef struct {
     int id;
@@ -13,3 +14,6 @@ typedef struct {
     char dateInscription[11]; 
     char statut[MAX_NAME_LENGTH];
 } Joueur;
+Joueur equipe[MAX_PLAYERS];
+int nombredujoueurs = 0;
+int prochainId = 1;
