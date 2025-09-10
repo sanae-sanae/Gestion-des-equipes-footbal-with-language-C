@@ -15,7 +15,7 @@ typedef struct {
     char statut[MAX_NAME_LENGTH];
 } Joueur;
 Joueur equipe[MAX_PLAYERS];
-int nombredujoueurs = 0;
+int nombreJoueurs = 0;
 int prochainId = 1;
 void afficherMenu();
 void ajouterJoueur();
@@ -86,4 +86,45 @@ int main() {
     
     return 0;
 }
-
+void afficherMenu() {
+    printf("║        MENU PRINCIPAL - FOOTBALL       ║\n");
+    printf("                                          \n");
+    printf("  1. Ajouter un joueur                  \n");
+    printf("  2. Ajouter plusieurs joueurs          \n");
+    printf("  3. Afficher tous les joueurs          \n");
+    printf("  4. Trier par nom (alphabétique)       \n");
+    printf("  5. Trier par âge                      \n");
+    printf("  6. Afficher par poste                 \n");
+    printf("  7. Modifier un joueur                 \n");
+    printf("  8. Supprimer un joueur                \n");
+    printf("  9. Rechercher un joueur               \n");
+    printf(" 10. Afficher les statistiques         \n");
+    printf("  0. Quitter                            \n");
+    
+}
+void ajouterJoueur() {
+    if(nombreJoueurs >= MAX_PLAYERS) {
+        printf("\n Équipe complète! Impossible d'ajouter plus de joueurs.\n");
+        return;
+    }
+     printf("\n=== AJOUT D'UN NOUVEAU JOUEUR ===\n");
+    
+    Joueur nouveauJoueur;
+    nouveauJoueur.id = prochainId++;
+    
+    printf("Nom: ");
+    fgets(nouveauJoueur.nom, MAX_NAME_LENGTH, stdin);
+    nouveauJoueur.nom[strcspn(nouveauJoueur.nom, "\n")] = 0;
+    
+    printf("Prénom: ");
+    fgets(nouveauJoueur.prenom, MAX_NAME_LENGTH, stdin);
+    nouveauJoueur.prenom[strcspn(nouveauJoueur.prenom, "\n")] = 0;
+    do {
+        printf("Numéro de maillot (1-99): ");
+        scanf("%d", &nouveauJoueur.numeroMaillot);
+        if(numeroMaillotExiste(nouveauJoueur.numeroMaillot)) {
+            printf("Ce numéro est déjà pris! Choisissez un autre.\n");
+        }
+    } while(numeroMaillotExiste(nouveauJoueur.numeroMaillot));
+    return 0;
+}
