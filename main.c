@@ -393,6 +393,13 @@ void rechercherJoueur() {
         
     }
 }
+void afficherstatistique(){
+    if(nombreJoueurs == 0 ){
+        printf("aucun statistique disponible");
+        return 1;
+
+    }
+}
 int numeroMaillotExiste(int numero) {
     for (int i = 0; i < nombreJoueurs; i++) {
         if (equipe[i].numeroMaillot == numero) {
@@ -401,3 +408,4 @@ int numeroMaillotExiste(int numero) {
     }
     return 0;
 }
+
