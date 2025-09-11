@@ -445,8 +445,11 @@ int maxButs = -1, indexMeilleur = -1;
              indexAge = i;
         }
     }
+     printf("Plus jeune: %s %s (%d ans)\n", 
+           equipe[indexJeune].nom, equipe[indexJeune].prenom, minAge);
+    printf("Plus âgé: %s %s (%d ans)\n", 
+           equipe[indexAge].nom, equipe[indexAge].prenom, maxAge);
 }
-
 
 int numeroMaillotExiste(int numero) {
     for (int i = 0; i < nombreJoueurs; i++) {
