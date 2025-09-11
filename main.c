@@ -29,6 +29,7 @@ void supprimerJoueur();
 void rechercherJoueur();
 void bubbleSortNom(Joueur arr[], int n);
 void bubbleSortAge(Joueur arr[], int n);
+void viderBuffer();
 int numeroMaillotExiste(int numero);
 int main() {
     int choix;
@@ -113,6 +114,7 @@ void ajouterJoueur() {
     nouveauJoueur.id = prochainId++;
     
     printf("Nom: ");
+viderBuffer();
     fgets(nouveauJoueur.nom, MAX_NAME_LENGTH, stdin);
     nouveauJoueur.nom[strcspn(nouveauJoueur.nom, "\n")] = 0; 
     
@@ -123,10 +125,22 @@ void ajouterJoueur() {
         printf("Numero de maillot (1-99): ");
         scanf("%d", &nouveauJoueur.numeroMaillot);
         if(numeroMaillotExiste(nouveauJoueur.numeroMaillot)) {
+           
             printf(" Ce numéro est déjà pris! Choisissez un autre.\n");
+       viderBuffer();
+       continue;
+       }
+        if (nouveauJoueur.numeroMaillot < 1 || nouveauJoueur.numeroMaillot > 99) {
+            printf(" Numéro invalide! Il doit être entre 1 et 99.\n");
+            continue;
         }
-    } while(numeroMaillotExiste(nouveauJoueur.numeroMaillot));
-    
+        if (numeroMaillotExiste(nouveauJoueur.numeroMaillot)) {
+            printf(" Ce numéro est déjà pris! Choisissez un autre.\n");
+            continue;
+        }
+        break; 
+    } while(1);
+     viderBuffer();
     
     printf("Poste (Gardien/Defenseur/Milieu/Attaquant): ");
     fgets(nouveauJoueur.poste, MAX_NAME_LENGTH, stdin);
@@ -137,7 +151,7 @@ void ajouterJoueur() {
     
     printf("Nombre de buts: ");
     scanf("%d", &nouveauJoueur.buts);
-    
+    viderBuffer();
     equipe[nombreJoueurs] = nouveauJoueur;
     nombreJoueurs++;
     
@@ -279,7 +293,7 @@ void modifierJoueur() {
     int id, choix;
     printf("Entrez l'ID du joueur à modifier: ");
     scanf("%d", &id);
-    
+     viderBuffer();
     int index = -1;
     for(int i = 0; i < nombreJoueurs; i++) {
         if(equipe[i].id == id) {
@@ -297,6 +311,7 @@ void modifierJoueur() {
     printf("1. Modifier le poste\n2. Modifier l'âge\n3. Modifier les buts\n");
     printf("Votre choix: ");
     scanf("%d", &choix);
+     viderBuffer();
  switch(choix) {
         case 1:
             printf("Nouveau poste: ");
@@ -344,7 +359,8 @@ void supprimerJoueur() {
     
     printf("Voulez-vous vraiment supprimer %s %s? (o/n): ", 
            equipe[index].nom, equipe[index].prenom);
-    char confirmation = getchar();
+   viderBuffer();
+           char confirmation = getchar();
     
     if(confirmation == 'o' || confirmation == 'O') {
         for(int i = index; i < nombreJoueurs - 1; i++) {
@@ -367,7 +383,7 @@ void rechercherJoueur() {
     printf("1. Rechercher par ID\n2. Rechercher par nom\n");
     printf("Votre choix: ");
     scanf("%d", &choix);
-    
+    viderBuffer();
     if(choix == 1) {
         int id;
         printf("Entrez l'ID: ");
@@ -450,6 +466,11 @@ int maxButs = -1, indexMeilleur = -1;
     printf("Plus âgé: %s %s (%d ans)\n", 
            equipe[indexAge].nom, equipe[indexAge].prenom, maxAge);
 }
+void viderBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
 
 int numeroMaillotExiste(int numero) {
     for (int i = 0; i < nombreJoueurs; i++) {
