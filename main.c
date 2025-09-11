@@ -399,6 +399,14 @@ void afficherstatistique(){
         return 1;
 
     }
+    printf("***STATISTIQUES DE L'EQUIPE\n");
+    printf("Nombre total des joueurs :%d\n", nombreJoueurs);
+    int sommeAge = 0;
+    for(int i = 0; i<nombreJoueurs ; i++){
+        sommeAge += equipe[i].age;
+    }
+    float ageMoyen = (float)sommeAge / nombreJoueurs;
+    printf("AGE moyen: %1.f ans\n", ageMoyen);
 }
 int numeroMaillotExiste(int numero) {
     for (int i = 0; i < nombreJoueurs; i++) {
