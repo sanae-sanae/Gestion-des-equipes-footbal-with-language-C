@@ -434,6 +434,13 @@ int maxButs = -1, indexMeilleur = -1;
         printf(" Meilleur buteur: %s %s avec %d buts\n", 
                equipe[indexMeilleur].nom, equipe[indexMeilleur].prenom, maxButs);
     }
+     int minAge = 999, maxAge = -1, indexJeune = -1, indexAge = -1;
+    for(int i = 0; i < nombreJoueurs; i++) {
+        if(equipe[i].age < minAge) {
+            minAge = equipe[i].age;
+            indexJeune = i;
+        }
+    }
 }
 
 
