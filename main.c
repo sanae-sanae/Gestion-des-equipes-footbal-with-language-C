@@ -396,7 +396,7 @@ void rechercherJoueur() {
 void afficherstatistique(){
     if(nombreJoueurs == 0 ){
         printf("aucun statistique disponible");
-        return 1;
+        return;
 
     }
     
