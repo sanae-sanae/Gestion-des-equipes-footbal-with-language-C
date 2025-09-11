@@ -399,6 +399,7 @@ void afficherstatistique(){
         return 1;
 
     }
+    
     printf("***STATISTIQUES DE L'EQUIPE\n");
     printf("Nombre total des joueurs :%d\n", nombreJoueurs);
     int sommeAge = 0;
@@ -407,7 +408,24 @@ void afficherstatistique(){
     }
     float ageMoyen = (float)sommeAge / nombreJoueurs;
     printf("AGE moyen: %1.f ans\n", ageMoyen);
+    int seuilButs;
+    printf("\nEntrez le seuil de buts pour la recherche: ");
+    scanf("%d", &seuilButs);
+    printf(" Joueurs avec plus de %d buts:\n", seuilButs);
+    
+    int buteursCompetents = 0;
+    for(int i = 0; i < nombreJoueurs; i++) {
+        if(equipe[i].buts > seuilButs) {
+            printf(" %s %s: %d buts\n", equipe[i].nom, equipe[i].prenom, equipe[i].buts);
+            buteursCompetents++;
+        }
+    }
+    if(buteursCompetents == 0) {
+        printf("  Aucun joueur trouvé.\n");
+    }
 }
+
+
 int numeroMaillotExiste(int numero) {
     for (int i = 0; i < nombreJoueurs; i++) {
         if (equipe[i].numeroMaillot == numero) {
