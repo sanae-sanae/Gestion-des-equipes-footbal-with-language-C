@@ -423,6 +423,17 @@ void afficherstatistique(){
     if(buteursCompetents == 0) {
         printf("  Aucun joueur trouvé.\n");
     }
+int maxButs = -1, indexMeilleur = -1;
+    for(int i = 0; i < nombreJoueurs; i++) {
+        if(equipe[i].buts > maxButs) {
+            maxButs = equipe[i].buts;
+            indexMeilleur = i;
+        }
+    }
+    if(indexMeilleur != -1) {
+        printf(" Meilleur buteur: %s %s avec %d buts\n", 
+               equipe[indexMeilleur].nom, equipe[indexMeilleur].prenom, maxButs);
+    }
 }
 
 
