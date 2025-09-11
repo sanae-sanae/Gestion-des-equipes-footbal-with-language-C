@@ -440,6 +440,10 @@ int maxButs = -1, indexMeilleur = -1;
             minAge = equipe[i].age;
             indexJeune = i;
         }
+        if(equipe[i].age > maxAge){
+            maxAge = equipe[i].age;
+             indexAge = i;
+        }
     }
 }
 
