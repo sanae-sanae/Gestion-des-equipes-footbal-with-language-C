@@ -146,8 +146,14 @@ viderBuffer();
     fgets(nouveauJoueur.poste, MAX_NAME_LENGTH, stdin);
     nouveauJoueur.poste[strcspn(nouveauJoueur.poste, "\n")] = 0;
     
-    printf("Age: ");
+   printf("Age (15-60): ");
+scanf("%d", &nouveauJoueur.age);
+while (nouveauJoueur.age < 15 || nouveauJoueur.age > 60) {
+    printf(" L'âge doit être entre 15 et 60 ans: ");
+    viderBuffer();
     scanf("%d", &nouveauJoueur.age);
+}
+
     
     printf("Nombre de buts: ");
     scanf("%d", &nouveauJoueur.buts);
