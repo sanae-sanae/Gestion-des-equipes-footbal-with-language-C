@@ -406,9 +406,24 @@ void rechercherJoueur() {
         printf("Entrez le nom: ");
         fgets(nom, MAX_NAME_LENGTH, stdin);
         nom[strcspn(nom, "\n")] = 0;
-        
+         int trouve = 0;
+    for(int i = 0; i < nombreJoueurs; i++) {
+        if(strcasecmp(equipe[i].nom, nom) == 0) {
+            printf("\n Joueur trouvé:\n");
+            printf("ID: %d | %s %s | Maillot: %d | %s | %d ans | %d buts\n",
+                   equipe[i].id, equipe[i].nom, equipe[i].prenom,
+                   equipe[i].numeroMaillot, equipe[i].poste, equipe[i].age,
+                   equipe[i].buts);
+            trouve = 1;
+        }
+    }
+    if(!trouve) {
+        printf(" Aucun joueur trouvé avec ce nom.\n");
     }
 }
+        
+    }
+
 void afficherstatistique(){
     if(nombreJoueurs == 0 ){
         printf("aucun statistique disponible");
