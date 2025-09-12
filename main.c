@@ -141,9 +141,22 @@ viderBuffer();
         break; 
     } while(1);
      viderBuffer();
-    
+  char posteValide = 0;
+do {
     printf("Poste (Gardien/Defenseur/Milieu/Attaquant): ");
-scanf(" %[^\n]", nouveauJoueur.poste);
+    fgets(nouveauJoueur.poste, MAX_NAME_LENGTH, stdin);
+    nouveauJoueur.poste[strcspn(nouveauJoueur.poste, "\n")] = 0; // نحيد \n
+
+    if (strcasecmp(nouveauJoueur.poste, "Gardien") == 0 ||
+        strcasecmp(nouveauJoueur.poste, "Defenseur") == 0 ||
+        strcasecmp(nouveauJoueur.poste, "Milieu") == 0 ||
+        strcasecmp(nouveauJoueur.poste, "Attaquant") == 0) {
+        posteValide = 1;
+    } else {
+        printf("⚠️ Poste invalide! Choisissez entre Gardien, Defenseur, Milieu ou Attaquant.\n");
+    }
+} while (!posteValide);
+
 printf("Age (15-60): ");
 while (scanf("%d", &nouveauJoueur.age) != 1 || 
        nouveauJoueur.age < 15 || 
