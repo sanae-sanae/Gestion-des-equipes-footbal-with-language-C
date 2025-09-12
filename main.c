@@ -155,8 +155,11 @@ while (nouveauJoueur.age < 15 || nouveauJoueur.age > 60) {
 }
 
     
-    printf("Nombre de buts: ");
-    scanf("%d", &nouveauJoueur.buts);
+   printf("Nombre de buts: ");
+while (scanf("%d", &nouveauJoueur.buts) != 1 || nouveauJoueur.buts < 0) {
+    printf("Le nombre de buts start en 0 a l 'infinie : ");
+    viderBuffer(); 
+}
     viderBuffer();
     equipe[nombreJoueurs] = nouveauJoueur;
     nombreJoueurs++;
