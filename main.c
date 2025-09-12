@@ -143,8 +143,15 @@ viderBuffer();
      viderBuffer();
     
     printf("Poste (Gardien/Defenseur/Milieu/Attaquant): ");
-    fgets(nouveauJoueur.poste, MAX_NAME_LENGTH, stdin);
-    nouveauJoueur.poste[strcspn(nouveauJoueur.poste, "\n")] = 0;
+scanf(" %[^\n]", nouveauJoueur.poste);
+printf("Age (15-60): ");
+while (scanf("%d", &nouveauJoueur.age) != 1 || 
+       nouveauJoueur.age < 15 || 
+       nouveauJoueur.age > 60) {
+    printf("⚠️  L'âge doit être un nombre entre 15 et 60. Réessayez: ");
+    viderBuffer();
+}
+
     
    printf("Age (15-60): ");
 scanf("%d", &nouveauJoueur.age);
